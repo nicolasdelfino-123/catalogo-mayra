@@ -51,6 +51,7 @@ export default function Cart({ isOpen: controlledOpen, onClose: controlledOnClos
   const location = useLocation();
   const isWholesale = location.pathname.startsWith("/mayorista");
   const pricePrefix = isWholesale ? "$" : "$";
+  const whatsappPhone = storeConfig.contact.whatsapp;
 
 
   const isRouteMode = controlledOpen === undefined && controlledOnClose === undefined;
@@ -171,8 +172,6 @@ export default function Cart({ isOpen: controlledOpen, onClose: controlledOnClos
 
     localStorage.setItem("customerData", JSON.stringify(customerData));
 
-    const phone = storeConfig.contact.whatsapp; // ⚠️ CAMBIAR POR EL NÚMERO DEL CLIENTE
-
     const orderText = buildWhatsAppMessage();
 
     const extraData = `
@@ -236,7 +235,7 @@ Pago: ${customerData.payment}
     }
 
     // ✅ encode SOLO AQUÍ
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
+    const url = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(finalMessage)}`;
 
     window.open(url, "_blank");
 
@@ -254,10 +253,9 @@ Pago: ${customerData.payment}
   // ===============================
 
   const sendToWhatsApp = () => {
-    const phone = "56964077278"; // ⚠️ CAMBIAR POR EL NÚMERO DEL CLIENTE
     const text = buildWhatsAppMessage();
 
-    const url = `https://wa.me/${phone}?text=${text}`;
+    const url = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(text)}`;
 
     window.open(url, "_blank");
   };

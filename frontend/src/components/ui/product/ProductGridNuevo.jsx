@@ -575,6 +575,8 @@ export default function ProductGridNuevo({ category, hideFilters = false }) {
     // -----------------------------
     return (
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8">
+            {!hideFilters && <div className="md:hidden h-[58px]" aria-hidden="true" />}
+
             {/* Breadcrumb */}
             {!hideFilters && (
                 <nav

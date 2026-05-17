@@ -379,15 +379,15 @@ export default function SidebarFiltersNuevo({
         <>
             <aside className={className}>
                 {/* Botón hamburguesa (mobile) */}
-                <div className="md:hidden mb-3">
+                <div className="fixed left-0 right-0 top-[calc(128px+env(safe-area-inset-top,0px))] z-40 border-y border-stone-200 bg-white/95 px-3 py-2 shadow-sm backdrop-blur md:hidden">
                     <button
                         onClick={() => setOpen(true)}
-                        className="inline-flex items-center gap-2 px-3 py-2 border rounded-md text-sm"
+                        className="mx-auto inline-flex w-full max-w-7xl items-center justify-center gap-2 rounded-md border border-stone-300 bg-white px-3 py-2.5 text-sm font-serif font-medium tracking-wide text-stone-900 shadow-sm transition-colors hover:border-stone-500 hover:bg-stone-50"
                     >
                         <Menu size={18} />
                         Ver categorías
                         {hasActiveFilters && (
-                            <span className="bg-[#232325] hover:bg-black text-white text-xs px-1.5 py-0.5 rounded-full">
+                            <span className="bg-[#232325] text-white text-xs px-1.5 py-0.5 rounded-full">
                                 {getActiveFilterTags().length}
                             </span>
                         )}

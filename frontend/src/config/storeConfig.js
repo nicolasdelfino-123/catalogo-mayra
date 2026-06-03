@@ -12,7 +12,7 @@ export const storeConfig = {
         header: {
             colors: {
                 white: "#ffffff",
-                black: "#0B0608",
+                black: "#000000ff",
             },
         },
         footer: {
@@ -52,7 +52,7 @@ export const storeConfig = {
 
         mobile: {
             // En mobile el header es fixed; este padding evita que el hero quede debajo.
-            sectionPaddingTop: "80px",
+            sectionPaddingTop: "0px",
             sectionPaddingBottom: "0px",
             sectionMarginTop: "0px",
             sectionMarginBottom: "0px",
@@ -140,8 +140,8 @@ export const storeConfig = {
         whatsappMessage: "Hola, quiero consultar por un perfume del catálogo",
         whatsappDisplay: "+56 9 6407 7278",
 
-        instagram: "https://www.instagram.com/danna_decants_puq/",
-        instagramDisplay: "@danna_decants_puq",
+        instagram: "https://www.instagram.com/mv_perfumesarabes/",
+        instagramDisplay: "@mv_perfumesarabes",
 
         email: "nicolasdelfino585@gmail.com",
         /*  emailDisplay: "nicolasdelfino585@gmail.com", */
@@ -155,13 +155,13 @@ export const storeConfig = {
 
     media: {
         // Hero desktop: se carga desde frontend/public. Escribi solo el nombre del archivo o una ruta publica, por ejemplo "f3_si.png".
-        heroImageDesktop: "f3_si.png",
+        heroImageDesktop: "banner_cel.png",
         // Hero mobile: se carga desde frontend/public. Escribi solo el nombre del archivo o una ruta publica, por ejemplo "f3_si.png".
-        heroImageMobile: "f3_si.png",
+        heroImageMobile: "banner_cel_si.png",
         // GIF del GlobalSpinner: se carga desde frontend/public. Si queres cambiarlo, pone el GIF en public y actualiza este nombre.
         globalSpinnerGif: "danna_spinner.gif",
-        headerLogo: "logo_attar_prueba.png",
-        footerLogo: "logo_danna.jpeg",
+        headerLogo: "logo_sin_fondo.png",
+        footerLogo: "logo_may.jpeg",
     },
 
     map: {

@@ -968,7 +968,7 @@ export default function AdminProducts() {
             const wantsFeatured = Boolean(form.show_on_home);
 
             if (isParentCategoryId(form.category_id)) {
-                alert("Debes seleccionar una subcategoría. Perfumes y Gafas son categorías generales.");
+                alert("Debes seleccionar una categoría final para el producto.");
                 return;
             }
 
@@ -1429,8 +1429,8 @@ export default function AdminProducts() {
                 />
                 <button
                     onClick={() => setForm({
-                        category_id: defaultCategoryId,
-                        category_name: defaultCategoryName,
+                        category_id: "",
+                        category_name: "",
                         is_active: true,
 
                         image_url: "",
@@ -2666,8 +2666,6 @@ export default function AdminProducts() {
                                 </option>
                             ))}
                         </select>
-
-                        {/* Sabores solo para 1 y 3 */}
 
                         <label className="flex items-center gap-2">
                             <input

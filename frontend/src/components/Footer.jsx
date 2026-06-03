@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { withWholesale } from '../utils/navigation.js'
 import { PERFUME_CATEGORY_TREE as FOOTER_CATEGORIES } from '../utils/perfumeCategories.js'
 
@@ -25,9 +25,12 @@ const footerDeveloperLinkClass = isWhiteFooter ? "hover:text-gray-950" : "hover:
 
 const Footer = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const isHomeFooter = ["/", "/inicio", "/mayorista/inicio"].includes(location.pathname);
+
     return (
         <div>
-            <footer className={`${footerTextClass} py-12 font-serif`} style={{ backgroundColor: footerBackgroundColor }}>
+            <footer className={`${footerTextClass} ${isHomeFooter ? "mt-[2cm]" : ""} py-12 font-serif`} style={{ backgroundColor: footerBackgroundColor }}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
                         <div className="flex flex flex-col items-center">

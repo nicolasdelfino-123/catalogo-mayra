@@ -1,8 +1,8 @@
 export const storeConfig = {
-    storeName: " Store Perfumes",
+    storeName: " MV Perfumes",
 
     features: {
-        showHeaderContact: true,
+        showHeaderContact: false,
         showBrandCarousel: true,
         headerTheme: "black", // "black" | "white"
         footerTheme: "black", // "black" | "white"
@@ -99,33 +99,16 @@ export const storeConfig = {
         // Cambia el texto chico de las cards del listado: "category" muestra la categoría y "brand" muestra la marca del producto.
         productCardMeta: "brand", // "category" | "brand"
 
-        // Categorías visibles del catálogo. Pueden tener hijos con "children".
+        // Categorías visibles del catálogo.
         // Cada id es un valor real que se guarda/envía a la DB como category_id.
         // El label es el nombre que se muestra en header, footer, filtros, cards y admin.
         // El orden de esta lista define el orden visual en los dropdowns y menús.
         // slug es opcional; si no lo ponés, usa el slug técnico definido en perfumeCategories o lo genera desde el label.
         categories: [
-            {
-                id: 1,
-                label: "Perfumes",
-                slug: "perfumes",
-                emoji: "✨",
-                children: [
-                    { id: 3, label: "Femeninos", slug: "femeninos", emoji: "🌸" },
-                    { id: 4, label: "Masculinos", slug: "masculinos", emoji: "🖤" },
-                    { id: 5, label: "Unisex", slug: "unisex", emoji: "✨" },
-                ],
-            },
-            {
-                id: 2,
-                label: "Gafas",
-                slug: "gafas",
-                emoji: "🕶️",
-                children: [
-                    { id: 6, label: "Ray-Ban", slug: "ray-ban", emoji: "🕶️" },
-                    { id: 7, label: "Scuderia Ferrari", slug: "scuderia-ferrari", emoji: "🏎️" },
-                ],
-            },
+            { id: 1, label: "Masculinos", slug: "masculinos", emoji: "🖤" },
+            { id: 2, label: "Femeninos", slug: "femeninos", emoji: "🌸" },
+            { id: 3, label: "Unisex", slug: "unisex", emoji: "✨" },
+            { id: 4, label: "Perfumes de Cartera", slug: "perfumes-de-cartera", emoji: "👜" },
         ],
     },
 
@@ -160,8 +143,8 @@ export const storeConfig = {
         heroImageMobile: "banner_cel_si.png",
         // GIF del GlobalSpinner: se carga desde frontend/public. Si queres cambiarlo, pone el GIF en public y actualiza este nombre.
         globalSpinnerGif: "danna_spinner.gif",
-        headerLogo: "logo_sin_fondo.png",
-        footerLogo: "logo_may.jpeg",
+        headerLogo: "log_si.png",
+        footerLogo: "footer_log.png",
     },
 
     map: {

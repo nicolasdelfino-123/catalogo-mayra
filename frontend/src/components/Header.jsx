@@ -269,9 +269,10 @@ export default function Header() {
       icon: child.emoji || "•",
     })),
   }));
+  const hasNestedProductCategories = productCategories.some((category) => category.children.length > 0);
   const activeProductCategory =
     productCategories.find((category) => category.route === activeProductCategoryRoute) ||
-    productCategories.find((category) => category.children.length > 0) ||
+    (hasNestedProductCategories ? productCategories.find((category) => category.children.length > 0) : null) ||
     null;
 
   const goToContact = (e) => {
@@ -361,7 +362,7 @@ export default function Header() {
                 <img
                   src={headerLogo}
                   alt={storeConfig.storeName.trim()}
-                  className="mt-[-0px] lg:mt-[-0px] h-[55px] lg:h-[55px] object-contain transition-all duration-300"
+                  className="mt-[1px] lg:mt-[-0px] h-[85px] lg:h-[85px] object-contain transition-all duration-300"
                 />
               </Link>
             </div>
@@ -376,7 +377,7 @@ export default function Header() {
                 onMouseEnter={() => {
                   if (productsCloseTimer.current) clearTimeout(productsCloseTimer.current);
                   setProductsDropdownOpen(true);
-                  if (!activeProductCategoryRoute) {
+                  if (hasNestedProductCategories && !activeProductCategoryRoute) {
                     const firstWithChildren = productCategories.find((category) => category.children.length > 0);
                     setActiveProductCategoryRoute(firstWithChildren?.route || "");
                   }
@@ -392,7 +393,7 @@ export default function Header() {
                   onClick={() => {
                     const nextOpen = !productsDropdownOpen;
                     setProductsDropdownOpen(nextOpen);
-                    if (nextOpen && !activeProductCategoryRoute) {
+                    if (nextOpen && hasNestedProductCategories && !activeProductCategoryRoute) {
                       const firstWithChildren = productCategories.find((category) => category.children.length > 0);
                       setActiveProductCategoryRoute(firstWithChildren?.route || "");
                     }
@@ -414,7 +415,7 @@ export default function Header() {
 
                 {/* Dropdown Menu */}
                 <div
-                  className={`absolute left-0 top-full -mt-px w-[38rem] ${dropdownSurfaceClass}
+                  className={`absolute left-0 top-full -mt-px ${hasNestedProductCategories ? "w-[38rem]" : "w-[18rem]"} ${dropdownSurfaceClass}
   rounded-b-xl rounded-t-none
   shadow-2xl
   backdrop-blur-lg z-50 overflow-hidden
@@ -423,8 +424,8 @@ export default function Header() {
 `}
                 >
 
-                  <div className={`grid grid-cols-[17rem_1fr] border-t-2 ${dropdownTopBorderClass}`}>
-                    <div className={`py-3 border-r ${isWhiteHeader ? "border-gray-100" : "border-amber-500/10"}`}>
+                  <div className={`${hasNestedProductCategories ? "grid grid-cols-[17rem_1fr]" : ""} border-t-2 ${dropdownTopBorderClass}`}>
+                    <div className={`py-3 ${hasNestedProductCategories ? `border-r ${isWhiteHeader ? "border-gray-100" : "border-amber-500/10"}` : ""}`}>
                       <Link
                         to={withWholesale("/products")}
                         className={`flex items-center px-5 py-3 text-[15px] ${dropdownLinkClass} transition-all duration-200`}
@@ -474,32 +475,34 @@ export default function Header() {
                       })}
                     </div>
 
-                    <div className="py-3">
-                      {activeProductCategory?.children?.length > 0 ? (
-                        <>
-                          <div className={`px-5 pb-2 text-[13px] uppercase tracking-wider ${isWhiteHeader ? "text-gray-500" : "text-gray-500"}`}>
-                            {activeProductCategory.name.toUpperCase()}
+                    {hasNestedProductCategories && (
+                      <div className="py-3">
+                        {activeProductCategory?.children?.length > 0 ? (
+                          <>
+                            <div className={`px-5 pb-2 text-[13px] uppercase tracking-wider ${isWhiteHeader ? "text-gray-500" : "text-gray-500"}`}>
+                              {activeProductCategory.name.toUpperCase()}
+                            </div>
+                            {activeProductCategory.children.map((child) => (
+                              <Link
+                                key={child.route}
+                                to={withWholesale(child.route)}
+                                className={`block whitespace-nowrap px-5 py-3 text-[15px] normal-case tracking-normal ${dropdownLinkClass} transition-colors`}
+                                onClick={() => {
+                                  window.scrollTo({ top: 0, behavior: "smooth" });
+                                  setProductsDropdownOpen(false);
+                                }}
+                              >
+                                {child.name}
+                              </Link>
+                            ))}
+                          </>
+                        ) : (
+                          <div className={`px-5 py-3 text-[15px] ${isWhiteHeader ? "text-gray-500" : "text-gray-500"}`}>
+                            Selecciona una categoría
                           </div>
-                          {activeProductCategory.children.map((child) => (
-                            <Link
-                              key={child.route}
-                              to={withWholesale(child.route)}
-                              className={`block whitespace-nowrap px-5 py-3 text-[15px] normal-case tracking-normal ${dropdownLinkClass} transition-colors`}
-                              onClick={() => {
-                                window.scrollTo({ top: 0, behavior: "smooth" });
-                                setProductsDropdownOpen(false);
-                              }}
-                            >
-                              {child.name}
-                            </Link>
-                          ))}
-                        </>
-                      ) : (
-                        <div className={`px-5 py-3 text-[15px] ${isWhiteHeader ? "text-gray-500" : "text-gray-500"}`}>
-                          Selecciona una categoría
-                        </div>
-                      )}
-                    </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
 

@@ -7,6 +7,8 @@ export const DEFAULT_CATEGORY_ID = 1;
 const PERFUME_CATEGORY_ID_DEFINITIONS = [
     { id: 1, fallbackName: "Masculinos", slug: "masculinos" },
     { id: 2, fallbackName: "Femeninos", slug: "femeninos" },
+    { id: 3, fallbackName: "Unisex", slug: "unisex" },
+    { id: 4, fallbackName: "Perfumes de Cartera", slug: "perfumes-de-cartera" },
 ];
 
 const slugifyCategoryLabel = (value = "") =>
@@ -32,8 +34,7 @@ const getCategoryEmoji = (category = {}, name = "") => {
     if (normalized.includes("femen")) return "🌸";
     if (normalized.includes("mascul")) return "🖤";
     if (normalized.includes("unisex")) return "✨";
-    if (normalized.includes("ray") || normalized.includes("gafa")) return "🕶️";
-    if (normalized.includes("ferrari") || normalized.includes("scuderia")) return "🏎️";
+    if (normalized.includes("cartera")) return "👜";
     if (normalized.includes("perfume")) return "✨";
     return "•";
 };

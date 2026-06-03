@@ -119,9 +119,9 @@ export const storeConfig = {
     },
 
     contact: {
-        whatsapp: "5493534793366",
+        whatsapp: "5493534768197",
         whatsappMessage: "Hola, quiero consultar por un perfume del catálogo",
-        whatsappDisplay: "+56 9 6407 7278",
+        whatsappDisplay: "+56 9 353 476-8197",
 
         instagram: "https://www.instagram.com/mv_perfumesarabes/",
         instagramDisplay: "@mv_perfumesarabes",
@@ -142,7 +142,7 @@ export const storeConfig = {
         // Hero mobile: se carga desde frontend/public. Escribi solo el nombre del archivo o una ruta publica, por ejemplo "f3_si.png".
         heroImageMobile: "banner_cel_si.png",
         // GIF del GlobalSpinner: se carga desde frontend/public. Si queres cambiarlo, pone el GIF en public y actualiza este nombre.
-        globalSpinnerGif: "danna_spinner.gif",
+        globalSpinnerGif: "spin_may.gif",
         headerLogo: "log_si.png",
         footerLogo: "footer_log.png",
     },

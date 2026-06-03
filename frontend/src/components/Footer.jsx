@@ -123,6 +123,7 @@ const Footer = () => {
                                         Instagram: {storeConfig.contact.instagramDisplay}
                                     </a>
                                 </li>
+
                             </ul>
                         </div>
 
